@@ -437,3 +437,53 @@ Este plugin nos permite obtener un efecto de desplazamiento suave al desplazar e
     <li><a href="#tercera-seccion">Tercera</a></li>
 </ul>
 ```
+
+## Generar la versión de producción
+
+Debemos colocarnos sobre la carpeta de nuestro proyecto y correr el siguiente comando
+
+```bash
+npm run build
+```
+
+Este comando creará una carpeta `dist` que contendra todos los archivos y carpetas que necesitamos para poner nuestro sitio en producción.
+
+## Subir nuestra versión de producción a GitHub pages
+
+* Modificar el archivo `.gitignore` ya que por defecto estara ignorando la carpeta `dist`. Para esto simplemente borramos la linea que dice `dist` y guardamos los cambios.
+
+* Inicializar el repositorio:
+
+```bash
+git init
+```
+
+* Agregar los archivos al Staging Area
+
+```bash
+git add -A
+```
+
+* Hacer un commit
+
+```bash
+git commit -m "Algún mensaje"
+```
+
+* Agregar nuestro repositorio remoto
+
+```bash
+git remote add origin git@github.com:username/repository.git
+```
+
+* Hacer push al repositorio remoto
+  
+```bash
+git subtree push --prefix dist origin gh-pages
+```
+
+> Esto lo que va a hacer es agarrar el contenido de la carpeta `dist` y hará push al repositorio remoto `origin` en una rama llamada `gh-pages`.
+
+* Nuestra version de producción se encontrará disponible en:
+
+> <https://username.github.io/repository>
